@@ -1,0 +1,34 @@
+<form ng-submit="addNewItem()">
+    <input id="new-todo" placeholder="What needs to be done?" ng-model="newItem" autofocus>
+</form>
+<section id="main">
+    <input id="toggle-all" type="checkbox" ng-click="markAllAsComplete()">
+    <label for="toggle-all">Mark all as complete</label>
+    <ul id="todo-list">
+        <li ng-repeat="item in todoItems | filter: {done: displayCompletedFlag}"
+            ng-class="{completed: item.done, editing: item == editableItem}">
+            <div class="view">
+                <input class="toggle" type="checkbox" ng-model="item.done" ng-change="toggleDoneStatus(item)">
+                <label ng-dblclick="editItem(item)">{{item.title}}</label>
+                <button class="destroy" ng-click="deleteItem(item)"></button>
+            </div>
+            <form ng-submit="saveEdittedItem(item)">
+                <input class="edit" ng-model="item.title">
+            </form>
+        </li>
+    </ul>
+</section>
+
+<footer id="footer" ng-show="todoItems.length">
+    <span id="todo-count">
+        <strong>{{todoItems.length - completedItems.length}}</strong>
+        <label>{{todoItems.length - completedItems.length == 1 ? "item left" : "items left"}}</label>
+    </span>
+    <ul id="filters">
+        <li><a ui-sref="home.all" ng-class="{selected: filterType == 'all'}">All</a></li>
+        <li><a ui-sref="home.active" ng-class="{selected: filterType == 'active'}">Active</a></li>
+        <li><a ui-sref="home.completed" ng-class="{selected: filterType == 'completed'}">Completed</a></li>
+    </ul>
+    <button id="clear-completed" ng-click="clearAllCompleted()" ng-show="completedItems.length">Clear completed
+    </button>
+</footer>
