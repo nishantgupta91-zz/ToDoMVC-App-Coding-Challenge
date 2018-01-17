@@ -91,8 +91,7 @@ a view, controller and services file.
 from the other.
 - ``` shared ``` folder present in ``` app ``` directory should contain individual features that this application should
  have. Examples can be a slider which can be made a separate component which is shared by multiple views as it's design
- and features will not change in different views. At the moment, there is no need of such shared features, that's why it
- is empty. But if we plan to extend this app further, there will certainly be a possibility to add components here.
+ and features will not change in different views. At the moment, there is no need of such shared features, that's why it's empty. But if we plan to extend this app further, there will certainly be a possibility to add components here.
 - Modularization of code has been the focus of my implementation. Providing separate folders for  ``` core ``` 
 components and ``` other ``` components like header, footer enhances the modularity. It can also be seen that the routes
 have been separated into separate files in each component. This is also done to modularize the code and improve the 
